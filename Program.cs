@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TestTask
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -12,11 +12,12 @@ namespace TestTask
             Console.WriteLine(result);
         }
 
-        static int Calc(IEnumerable<int> arr)
+        public static int Calc(IEnumerable<int> arr)
         {
             int firstMin = int.MaxValue, secondMin = int.MaxValue;
             foreach(int e in arr)
             {
+                Console.WriteLine(e);
                 if(e > secondMin) continue;
                 if(e < firstMin)
                 {
@@ -28,6 +29,10 @@ namespace TestTask
                     secondMin = e;
                 }
             }
+
+            if (secondMin == int.MaxValue)
+                throw new InvalidOperationException();
+
             return firstMin + secondMin;
         }
     }
